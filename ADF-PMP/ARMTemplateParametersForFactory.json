@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ADF-PMP"
+		},
+		"lnk_Source_adf_DB_password": {
+			"value": ""
+		},
+		"lnk_pmpstrgacct_connectionString": {
+			"value": ""
+		},
+		"lnk_Source_adf_DB_properties_typeProperties_server": {
+			"value": "pmp.database.windows.net"
+		},
+		"lnk_Source_adf_DB_properties_typeProperties_database": {
+			"value": "Source_adf_DB"
+		},
+		"lnk_Source_adf_DB_properties_typeProperties_userName": {
+			"value": "pinkz"
+		}
+	}
+}
