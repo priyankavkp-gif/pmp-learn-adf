@@ -29,7 +29,8 @@
 					"dataset": {
 						"referenceName": "lookup_json",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
@@ -73,6 +74,13 @@
 											"type": "Expression"
 										}
 									}
+								},
+								"logStorageSettings": {
+									"linkedServiceName": {
+										"referenceName": "lnk_pmpstrgacct",
+										"type": "LinkedServiceReference"
+									},
+									"path": "logs-files"
 								},
 								"enableLogging": true,
 								"storeSettings": {
