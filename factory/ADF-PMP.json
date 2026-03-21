@@ -1,0 +1,9 @@
+{
+	"name": "ADF-PMP",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "58fb42f4-e0ed-4c66-8a2a-57dac72076ff",
+		"tenantId": "6032fe65-1bc2-4175-ab38-2e92d4c558d2"
+	}
+}
