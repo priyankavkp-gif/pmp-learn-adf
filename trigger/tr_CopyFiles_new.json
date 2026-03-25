@@ -1,0 +1,18 @@
+{
+	"name": "tr_CopyFiles_new",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1,
+				"startTime": "2026-03-25T17:46:00Z",
+				"endTime": "2026-03-25T18:00:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
