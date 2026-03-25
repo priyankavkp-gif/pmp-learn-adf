@@ -65,16 +65,6 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"dataset": {
-									"referenceName": "ds_lookup_blob",
-									"type": "DatasetReference",
-									"parameters": {
-										"FolderName": {
-											"value": "@item().FolderName",
-											"type": "Expression"
-										}
-									}
-								},
 								"logStorageSettings": {
 									"linkedServiceName": {
 										"referenceName": "lnk_pmpstrgacct",
