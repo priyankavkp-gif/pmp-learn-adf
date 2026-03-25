@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'lnk_Source_adf_DB'"
 		},
+		"lnk_blob_strg_pmp_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'lnk_blob_strg_pmp'"
+		},
 		"lnk_pmpstrgacct_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'lnk_pmpstrgacct'"
@@ -56,6 +60,9 @@
 					},
 					"lnk_Source_adf_DB_password": {
 						"value": "[parameters('lnk_Source_adf_DB_password')]"
+					},
+					"lnk_blob_strg_pmp_connectionString": {
+						"value": "[parameters('lnk_blob_strg_pmp_connectionString')]"
 					},
 					"lnk_pmpstrgacct_connectionString": {
 						"value": "[parameters('lnk_pmpstrgacct_connectionString')]"

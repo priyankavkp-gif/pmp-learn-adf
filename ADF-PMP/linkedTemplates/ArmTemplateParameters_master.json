@@ -8,6 +8,9 @@
 		"lnk_Source_adf_DB_password": {
 			"value": ""
 		},
+		"lnk_blob_strg_pmp_connectionString": {
+			"value": ""
+		},
 		"lnk_pmpstrgacct_connectionString": {
 			"value": ""
 		},
