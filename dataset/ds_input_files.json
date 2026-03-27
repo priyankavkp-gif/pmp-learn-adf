@@ -1,0 +1,22 @@
+{
+	"name": "ds_input_files",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_pmp_strg_acct",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "input-files"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
