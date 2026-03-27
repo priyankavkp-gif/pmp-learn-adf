@@ -5,6 +5,11 @@
 			"referenceName": "lnk_SourceDB",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"db_FileName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
