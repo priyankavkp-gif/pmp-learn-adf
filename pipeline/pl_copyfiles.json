@@ -46,6 +46,29 @@
 						"value": "@activity('Get Metadata for input-files').output.exists",
 						"type": "Expression"
 					},
+					"ifFalseActivities": [
+						{
+							"name": "SendEmail",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"url": "https://emaillogicapp-cpg4a8gxcchuccap.canadacentral-01.azurewebsites.net:443/api/Myworkflow/triggers/When_an_HTTP_request_is_received/invoke?api-version=2022-05-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=-75YPA7HPH3ga3SwGpwnI1x8nrGib8WbqgSwJeuDEzE",
+								"body": {
+									"value": "{\n    \"PipelineName\":\"@{pipeline().Pipeline}\",\n    \"DataFacctoryName\":\"@{pipeline().DataFactory},\n    \"RunID\":\"@{pipeline().RunId}\",\n    \"RowRead\":\"@{activity('Get Metadata for input-files').output.rowsread}\"\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					],
 					"ifTrueActivities": [
 						{
 							"name": "df_copyrecords_tosql_deletefrominput_archivefiles",
