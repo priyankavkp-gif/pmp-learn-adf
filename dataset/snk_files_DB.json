@@ -1,0 +1,50 @@
+{
+	"name": "snk_files_DB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_SourceDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "EmployeeID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FirstName",
+				"type": "varchar"
+			},
+			{
+				"name": "LastName",
+				"type": "varchar"
+			},
+			{
+				"name": "Department",
+				"type": "varchar"
+			},
+			{
+				"name": "Role",
+				"type": "varchar"
+			},
+			{
+				"name": "Email",
+				"type": "varchar"
+			},
+			{
+				"name": "Phone",
+				"type": "varchar"
+			},
+			{
+				"name": "FileName",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_Employees_Dept"
+		}
+	}
+}

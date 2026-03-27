@@ -1,0 +1,66 @@
+{
+	"name": "df_copyrecords_tosql_deletefrominput_archivefiles",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_input_files",
+						"type": "DatasetReference"
+					},
+					"name": "srcinputfiles"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "snk_files_DB",
+						"type": "DatasetReference"
+					},
+					"name": "snkinputfiles"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          EmployeeID as string,",
+				"          FirstName as string,",
+				"          LastName as string,",
+				"          Department as string,",
+				"          Role as string,",
+				"          Email as string,",
+				"          Phone as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     ignoreNoFilesFound: false,",
+				"     moveFiles: ['','archive-files'],",
+				"     rowUrlColumn: 'FileName',",
+				"     wildcardPaths:['*.*']) ~> srcinputfiles",
+				"srcinputfiles sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          EmployeeID as integer,",
+				"          FirstName as string,",
+				"          LastName as string,",
+				"          Department as string,",
+				"          Role as string,",
+				"          Email as string,",
+				"          Phone as string,",
+				"          FileName as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     truncate:true,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> snkinputfiles"
+			]
+		}
+	}
+}
