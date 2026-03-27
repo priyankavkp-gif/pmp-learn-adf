@@ -12,7 +12,15 @@
 					"name": "srcinputfiles"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "snk_files_DB",
+						"type": "DatasetReference"
+					},
+					"name": "snkinputfiles"
+				}
+			],
 			"transformations": [],
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
@@ -21,7 +29,27 @@
 				"     ignoreNoFilesFound: false,",
 				"     moveFiles: ['','archive-files'],",
 				"     rowUrlColumn: 'FileName',",
-				"     wildcardPaths:['*.*']) ~> srcinputfiles"
+				"     wildcardPaths:['*.*']) ~> srcinputfiles",
+				"srcinputfiles sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          EmployeeID as integer,",
+				"          FirstName as string,",
+				"          LastName as string,",
+				"          Department as string,",
+				"          Role as string,",
+				"          Email as string,",
+				"          Phone as string,",
+				"          FileName as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> snkinputfiles"
 			]
 		}
 	}
