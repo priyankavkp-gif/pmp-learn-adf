@@ -5,11 +5,6 @@
 			"referenceName": "lnk_pmp_strg_acct",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"p_FileName": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
