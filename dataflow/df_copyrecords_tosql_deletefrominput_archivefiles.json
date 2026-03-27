@@ -24,7 +24,7 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          EmployeeID as string,",
+				"          EmployeeID as integer,",
 				"          FirstName as string,",
 				"          LastName as string,",
 				"          Department as string,",
