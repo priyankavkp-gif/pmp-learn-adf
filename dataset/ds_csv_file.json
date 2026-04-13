@@ -1,0 +1,23 @@
+{
+	"name": "ds_csv_file",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_pmp_strg_acct",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "priJsonFile.csv",
+				"container": "archive-folder"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
