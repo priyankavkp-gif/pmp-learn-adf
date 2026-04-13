@@ -80,8 +80,9 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "",
-									"physicalType": "String"
+									"type": "String",
+									"physicalType": "String",
+									"ordinal": 1
 								}
 							}
 						],
