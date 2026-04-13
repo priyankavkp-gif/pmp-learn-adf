@@ -20,7 +20,7 @@
 				}
 			},
 			{
-				"name": "Copy data Json to csv",
+				"name": "Copy Json data to csv from parameter",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -43,7 +43,7 @@
 						"type": "DelimitedTextSource",
 						"additionalColumns": [
 							{
-								"name": "colname",
+								"name": "collname",
 								"value": {
 									"value": "@variables('var_JSONData')",
 									"type": "Expression"
@@ -76,32 +76,32 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "colname",
+									"name": "collname",
 									"type": "String"
 								},
 								"sink": {
+									"name": "Column2",
 									"type": "String",
-									"physicalType": "String",
-									"ordinal": 1
+									"physicalType": "String"
 								}
 							}
 						],
 						"typeConversion": true,
 						"typeConversionSettings": {
-							"allowDataTruncation": true,
+							"allowDataTruncation": false,
 							"treatBooleanAsNumber": false
 						}
 					}
 				},
 				"inputs": [
 					{
-						"referenceName": "json_PriSource",
+						"referenceName": "ds_Src_template",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_csv_file",
+						"referenceName": "ds_blob_pmp",
 						"type": "DatasetReference"
 					}
 				]
@@ -129,7 +129,7 @@
 			}
 		},
 		"folder": {
-			"name": "Iteration_Condition"
+			"name": "Iteration_Condition_RESTAPI"
 		},
 		"annotations": []
 	}
