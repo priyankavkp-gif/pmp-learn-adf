@@ -14,7 +14,7 @@
 				"typeProperties": {
 					"variableName": "var_JSONData",
 					"value": {
-						"value": "@pipeline().parameters.p_jsonData",
+						"value": "@{pipeline().parameters.p_jsonData}",
 						"type": "Expression"
 					}
 				}
@@ -73,6 +73,18 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "colname",
+									"type": "String"
+								},
+								"sink": {
+									"name": "",
+									"physicalType": "String"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
@@ -112,7 +124,7 @@
 		},
 		"variables": {
 			"var_JSONData": {
-				"type": "Array"
+				"type": "String"
 			}
 		},
 		"folder": {
