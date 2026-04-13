@@ -2,7 +2,7 @@
 	"name": "ds_blob_pmp",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_blob_strg_pmp",
+			"referenceName": "lnk_pmp_strg_acct",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,13 +10,13 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Product.csv",
-				"container": "input-files"
+				"fileName": "priJsonFile.csv",
+				"container": "archive-folder"
 			},
 			"columnDelimiter": ",",
-			"escapeChar": "\\",
+			"escapeChar": "",
 			"firstRowAsHeader": true,
-			"quoteChar": "\""
+			"quoteChar": ""
 		},
 		"schema": []
 	}
