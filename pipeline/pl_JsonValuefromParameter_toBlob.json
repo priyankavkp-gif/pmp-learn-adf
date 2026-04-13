@@ -1,0 +1,123 @@
+{
+	"name": "pl_JsonValuefromParameter_toBlob",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable JSONData",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "var_JSONData",
+					"value": {
+						"value": "@pipeline().parameters.p_jsonData",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Copy data Json to csv",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Set variable JSONData",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "colname",
+								"value": {
+									"value": "@variables('var_JSONData')",
+									"type": "Expression"
+								}
+							}
+						],
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "json_PriSource",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_csv_file",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"parameters": {
+			"p_jsonData": {
+				"type": "string",
+				"defaultValue": {
+					"name": "Priyanka",
+					"age": 28,
+					"location": "Chennai",
+					"skills": [
+						"ETL",
+						"SSIS",
+						"ADF"
+					],
+					"active": true
+				}
+			}
+		},
+		"variables": {
+			"var_JSONData": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Iteration_Condition"
+		},
+		"annotations": []
+	}
+}
