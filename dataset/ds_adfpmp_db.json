@@ -1,0 +1,16 @@
+{
+	"name": "ds_adfpmp_db",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_adfpmp_db",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "lkp_rstapi"
+		}
+	}
+}
