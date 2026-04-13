@@ -1,0 +1,12 @@
+{
+	"name": "restapi_typicode",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_RestApi",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
