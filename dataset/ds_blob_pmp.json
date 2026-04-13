@@ -5,12 +5,20 @@
 			"referenceName": "lnk_pmp_strg_acct",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"p_FileName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "priJsonFile.csv",
+				"fileName": {
+					"value": "@dataset().p_FileName",
+					"type": "Expression"
+				},
 				"container": "archive-folder"
 			},
 			"columnDelimiter": ",",
