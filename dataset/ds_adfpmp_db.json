@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "lkp_rstapi"
+			"table": "tbl_restapi_Employees"
 		}
 	}
 }
