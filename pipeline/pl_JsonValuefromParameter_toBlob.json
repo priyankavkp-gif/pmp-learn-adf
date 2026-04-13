@@ -112,7 +112,7 @@
 		},
 		"variables": {
 			"var_JSONData": {
-				"type": "String"
+				"type": "Array"
 			}
 		},
 		"folder": {
