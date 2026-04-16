@@ -1,0 +1,10 @@
+{
+	"name": "KeyVault_lnk_blb_pmp",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://keyvault-pmp.vault.azure.net/"
+		}
+	}
+}
