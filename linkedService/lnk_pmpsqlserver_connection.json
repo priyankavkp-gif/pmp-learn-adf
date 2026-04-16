@@ -1,0 +1,27 @@
+{
+	"name": "lnk_pmpsqlserver_connection",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "pmp.database.windows.net",
+			"database": "adfpmp_DB",
+			"encrypt": "mandatory",
+			"trustServerCertificate": true,
+			"authenticationType": "SQL",
+			"userName": "pmp",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "KeyVault_lnk_sqlconnection_pmp",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "kv-pmp-sqlserver-connection",
+				"secretVersion": "610cc48a09d543d3b7a3ef979e611a2a"
+			},
+			"alwaysEncryptedSettings": {
+				"alwaysEncryptedAkvAuthType": "ManagedIdentity"
+			}
+		}
+	}
+}
