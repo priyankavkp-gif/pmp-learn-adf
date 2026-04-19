@@ -19,10 +19,6 @@
 			"firstRowAsHeader": false,
 			"quoteChar": null
 		},
-		"schema": [
-			{
-				"type": "String"
-			}
-		]
+		"schema": []
 	}
 }
