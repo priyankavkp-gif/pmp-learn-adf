@@ -10,6 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "HealthTech_Inc.json",
+				"folderPath": "JSON_files",
 				"container": "input-files"
 			},
 			"columnDelimiter": ",",
