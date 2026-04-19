@@ -2,7 +2,7 @@
 	"name": "ds_input_files",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_pmp_strg_acct",
+			"referenceName": "lnk_pmpBlob",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -17,8 +17,12 @@
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": false,
-			"quoteChar": "\""
+			"quoteChar": null
 		},
-		"schema": []
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
 	}
 }
