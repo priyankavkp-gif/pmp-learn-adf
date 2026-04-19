@@ -1,0 +1,10 @@
+{
+	"name": "lnk_kv_blob_HRDept",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://keyvault-pmp.vault.azure.net/"
+		}
+	}
+}
