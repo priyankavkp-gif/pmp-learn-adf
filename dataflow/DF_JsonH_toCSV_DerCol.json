@@ -34,7 +34,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     documentForm: 'documentPerLine',",
+				"     documentForm: 'singleDocument',",
 				"     partitionBy('hash', 1)) ~> dsHealthTechjson",
 				"dsHealthTechjson derive(Dept_Name = Departments.Name,",
 				"          Emp_ID = Departments.Employees.ID,",
