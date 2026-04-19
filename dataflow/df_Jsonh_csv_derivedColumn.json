@@ -12,7 +12,15 @@
 					"name": "srcHealthTechJsonData"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_HealthTech_FlattenedDC",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumnUnrollDepts"
@@ -28,7 +36,27 @@
 				"     ignoreNoFilesFound: false,",
 				"     documentForm: 'singleDocument') ~> srcHealthTechJsonData",
 				"srcHealthTechJsonData derive(Dept_Names = flatten(array(Departments.Name)),",
-				"     partitionBy('hash', 1)) ~> derivedColumnUnrollDepts"
+				"          Employee_ID = flatten(array(Departments.Employees.ID)),",
+				"          Emp_name = flatten(array(Departments.Employees.Name)),",
+				"          Role = flatten(array(Departments.Employees.Role)),",
+				"     partitionBy('hash', 1)) ~> derivedColumnUnrollDepts",
+				"derivedColumnUnrollDepts sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Company as string,",
+				"          Dept_Name as string,",
+				"          Emp_ID as string,",
+				"          Emp_Name as string,",
+				"          Role as string",
+				"     ),",
+				"     partitionFileNames:['Flattened_HealthTech.csv'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Company,",
+				"          Dept_Name = Departments",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
 			]
 		}
 	}

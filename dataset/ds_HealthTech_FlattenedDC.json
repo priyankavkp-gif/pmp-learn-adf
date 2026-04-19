@@ -1,0 +1,45 @@
+{
+	"name": "ds_HealthTech_FlattenedDC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_pmpBlob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Flattened_HealthTech.csv",
+				"folderPath": "JSON_files",
+				"container": "input-files"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Company",
+				"type": "String"
+			},
+			{
+				"name": "Dept_Name",
+				"type": "String"
+			},
+			{
+				"name": "Emp_ID",
+				"type": "String"
+			},
+			{
+				"name": "Emp_Name",
+				"type": "String"
+			},
+			{
+				"name": "Role",
+				"type": "String"
+			}
+		]
+	}
+}
