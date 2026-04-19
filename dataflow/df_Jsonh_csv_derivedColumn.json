@@ -1,0 +1,35 @@
+{
+	"name": "df_Jsonh_csv_derivedColumn",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "jsonHealthTech",
+						"type": "DatasetReference"
+					},
+					"name": "srcHealthTechJsonData"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "derivedColumnUnrollDepts"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Company as string,",
+				"          Departments as (Employees as (ID as short, Name as string, Role as string)[], Name as string)[]",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'singleDocument') ~> srcHealthTechJsonData",
+				"srcHealthTechJsonData derive(Dept_Names = flatten(array(Departments.Name)),",
+				"     partitionBy('hash', 1)) ~> derivedColumnUnrollDepts"
+			]
+		}
+	}
+}
