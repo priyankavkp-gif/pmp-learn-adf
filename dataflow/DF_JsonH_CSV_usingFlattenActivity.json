@@ -1,0 +1,65 @@
+{
+	"name": "DF_JsonH_CSV_usingFlattenActivity",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "json_HealthTech",
+						"type": "DatasetReference"
+					},
+					"name": "srcHealthTechJson"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_HealthTech_FlattenedCSV",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "flatten1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Company as string,",
+				"          Departments as (Employees as (ID as short, Name as string, Role as string)[], Name as string)[]",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'arrayOfDocuments') ~> srcHealthTechJson",
+				"srcHealthTechJson foldDown(unrollMultiple(Departments,Departments.Employees),",
+				"     mapColumn(",
+				"          Company,",
+				"          Departments,",
+				"          Dept_Name = Departments.Name,",
+				"          Emp_ID = Departments.Employees.ID,",
+				"          Emp_Name = Departments.Employees.Name,",
+				"          Role = Departments.Employees.Role",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten1",
+				"flatten1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['FlattenedHealthTech_CSV'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Company,",
+				"          Dept_Name,",
+				"          Emp_ID,",
+				"          Emp_Name,",
+				"          Role",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}
