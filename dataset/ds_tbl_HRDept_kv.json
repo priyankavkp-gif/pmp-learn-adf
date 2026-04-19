@@ -1,0 +1,16 @@
+{
+	"name": "ds_tbl_HRDept_kv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_pmpsqlserver_connection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_HRDept"
+		}
+	}
+}
