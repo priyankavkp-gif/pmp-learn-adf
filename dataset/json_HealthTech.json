@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "HealthTech_Inc.json",
+				"fileName": "HealthTeech_json_ArrayofDocs.json",
 				"folderPath": "JSON_files",
 				"container": "input-files"
 			}
