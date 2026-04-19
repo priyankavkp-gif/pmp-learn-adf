@@ -16,8 +16,8 @@
 					"referenceName": "KeyVault_lnk_sqlconnection_pmp",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "kv-pmp-sqlserver-connection",
-				"secretVersion": "610cc48a09d543d3b7a3ef979e611a2a"
+				"secretName": "sec-pmpsqlserverconnection",
+				"secretVersion": "5d1f97abc9734aef9fb4c41b1ea44d01"
 			},
 			"alwaysEncryptedSettings": {
 				"alwaysEncryptedAkvAuthType": "ManagedIdentity"
