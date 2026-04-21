@@ -1,6 +1,9 @@
 {
 	"name": "df_Jsonh_csv_derivedColumn",
 	"properties": {
+		"folder": {
+			"name": "DF_JSON_CSV_FilesConversion"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
@@ -29,16 +32,17 @@
 			"scriptLines": [
 				"source(output(",
 				"          Company as string,",
-				"          Departments as (Employees as (ID as short, Name as string, Role as string)[], Name as string)[]",
+				"          Department as string,",
+				"          Employees_Details as (ID as string, Name as string, Role as string)",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     documentForm: 'singleDocument') ~> srcHealthTechJsonData",
-				"srcHealthTechJsonData derive(Dept_Names = flatten(array(Departments.Name)),",
-				"          Employee_ID = flatten(array(Departments.Employees.ID)),",
-				"          Emp_name = flatten(array(Departments.Employees.Name)),",
-				"          Role = flatten(array(Departments.Employees.Role)),",
+				"     documentForm: 'arrayOfDocuments',",
+				"     partitionBy('hash', 1)) ~> srcHealthTechJsonData",
+				"srcHealthTechJsonData derive(Emp_ID = Employees_Details.ID,",
+				"          Emp_Name = Employees_Details.Name,",
+				"          Role = Employees_Details.Role,",
 				"     partitionBy('hash', 1)) ~> derivedColumnUnrollDepts",
 				"derivedColumnUnrollDepts sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -54,7 +58,10 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
 				"          Company,",
-				"          Dept_Name = Departments",
+				"          Dept_Name = Department,",
+				"          Emp_ID,",
+				"          Emp_Name,",
+				"          Role",
 				"     ),",
 				"     partitionBy('hash', 1)) ~> sink1"
 			]
