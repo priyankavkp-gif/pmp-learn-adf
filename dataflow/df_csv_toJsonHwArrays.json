@@ -1,0 +1,63 @@
+{
+	"name": "df_csv_toJsonHwArrays",
+	"properties": {
+		"folder": {
+			"name": "DF_JSON_CSV_FilesConversion_UsingDerivedColumn"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_Emp_wSkills",
+						"type": "DatasetReference"
+					},
+					"name": "srcCSVtoJSONhierarchywArrays"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_EmpwSkills_JsonhierarchyArrays",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          ID as string,",
+				"          Age as string,",
+				"          FName as string,",
+				"          LName as string,",
+				"          Skill1 as string,",
+				"          Skill2 as string,",
+				"          Skill3 as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> srcCSVtoJSONhierarchywArrays",
+				"srcCSVtoJSONhierarchywArrays derive(Emp_Name = concat(FName,' ',LName),",
+				"          Skills = array(Skill1,Skill2,Skill3),",
+				"     partitionBy('hash', 1)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['SkillSet_JsonHArray.json'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          ID,",
+				"          Age,",
+				"          Emp_Name,",
+				"          Skills",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}

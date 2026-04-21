@@ -1,0 +1,19 @@
+{
+	"name": "ds_EmpwSkills_JsonhierarchyArrays",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_pmpBlob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "SkillSet_JsonHArray.json",
+				"container": "input-files"
+			}
+		},
+		"schema": {}
+	}
+}
