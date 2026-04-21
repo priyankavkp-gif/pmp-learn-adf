@@ -15,41 +15,6 @@
 				"container": "input-files"
 			}
 		},
-		"schema": {
-			"type": "object",
-			"properties": {
-				"Company": {
-					"type": "string"
-				},
-				"Departments": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"Name": {
-								"type": "string"
-							},
-							"Employees": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"ID": {
-											"type": "integer"
-										},
-										"Name": {
-											"type": "string"
-										},
-										"Role": {
-											"type": "string"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
+		"schema": {}
 	}
 }
