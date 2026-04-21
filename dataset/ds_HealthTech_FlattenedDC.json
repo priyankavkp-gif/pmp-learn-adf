@@ -15,9 +15,10 @@
 				"container": "input-files"
 			},
 			"columnDelimiter": ",",
+			"rowDelimiter": "",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
-			"quoteChar": "\""
+			"quoteChar": ""
 		},
 		"schema": [
 			{
