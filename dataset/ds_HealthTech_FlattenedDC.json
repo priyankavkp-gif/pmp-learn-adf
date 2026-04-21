@@ -15,8 +15,7 @@
 				"container": "input-files"
 			},
 			"columnDelimiter": ",",
-			"rowDelimiter": "",
-			"escapeChar": "\\",
+			"escapeChar": "",
 			"firstRowAsHeader": true,
 			"quoteChar": ""
 		},
