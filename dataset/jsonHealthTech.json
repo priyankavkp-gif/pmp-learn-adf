@@ -15,6 +15,30 @@
 				"container": "input-files"
 			}
 		},
-		"schema": {}
+		"schema": {
+			"type": "object",
+			"properties": {
+				"Company": {
+					"type": "string"
+				},
+				"Department": {
+					"type": "string"
+				},
+				"Employees_Details": {
+					"type": "object",
+					"properties": {
+						"ID": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						},
+						"Role": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
 	}
 }
