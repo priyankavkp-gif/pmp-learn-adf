@@ -1,0 +1,53 @@
+{
+	"name": "ds_Emp_wSkills",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_pmpBlob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Emp_Details_withSkills.csv.txt",
+				"folderPath": "JSON_files",
+				"container": "input-files"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ID",
+				"type": "String"
+			},
+			{
+				"name": "Age",
+				"type": "String"
+			},
+			{
+				"name": "FName",
+				"type": "String"
+			},
+			{
+				"name": "LName",
+				"type": "String"
+			},
+			{
+				"name": "Skill1",
+				"type": "String"
+			},
+			{
+				"name": "Skill2",
+				"type": "String"
+			},
+			{
+				"name": "Skill3",
+				"type": "String"
+			}
+		]
+	}
+}

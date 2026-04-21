@@ -1,0 +1,19 @@
+{
+	"name": "ds_EmpwSkillsJson",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_pmpBlob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "EmpSkillset.json",
+				"container": "input-files"
+			}
+		},
+		"schema": {}
+	}
+}

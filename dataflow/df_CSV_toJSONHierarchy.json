@@ -1,0 +1,66 @@
+{
+	"name": "df_CSV_toJSONHierarchy",
+	"properties": {
+		"folder": {
+			"name": "DF_JSON_CSV_FilesConversion"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_Emp_wSkills",
+						"type": "DatasetReference"
+					},
+					"name": "srcEmployeeswSkills"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_EmpwSkillsJson",
+						"type": "DatasetReference"
+					},
+					"name": "snkEmpwSkills"
+				}
+			],
+			"transformations": [
+				{
+					"name": "dcgroupSkills"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          ID as string,",
+				"          Age as string,",
+				"          FName as string,",
+				"          LName as string,",
+				"          Skill1 as string,",
+				"          Skill2 as string,",
+				"          Skill3 as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     partitionBy('hash', 1)) ~> srcEmployeeswSkills",
+				"srcEmployeeswSkills derive(Emp_Name = concat(FName, LName),",
+				"          Skills = @(Skill1=Skill1,",
+				"          Skill2=Skill2,",
+				"          Skill3=Skill3),",
+				"     partitionBy('hash', 1)) ~> dcgroupSkills",
+				"dcgroupSkills sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['EmpSkillset.json'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          ID,",
+				"          Age,",
+				"          Emp_Name,",
+				"          Skills",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> snkEmpwSkills"
+			]
+		}
+	}
+}
